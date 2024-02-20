@@ -12,14 +12,13 @@
             "name" => $name,
             "price" => $price,
             "qtt" => $qtt,
-            "total" => $price*$qtt
+            "total" => $price*$qtt,
+            // true => $isSuccess
         ];
 
         $_SESSION['products'][] = $product;
         $_SESSION['flash_message'] = "J'ai ajouté un produit";
-    }else{
-        echo $_SESSION['flash_message'] = "Echec de creation d'un produit";
-    };        
+    }  
 
     }
 

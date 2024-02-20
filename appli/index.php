@@ -1,5 +1,7 @@
 <?php
     session_start();
+
+
 ?>
 
 <!DOCTYPE html>
@@ -33,26 +35,38 @@
                 <label for="name">
                     Nom du produit : 
                     <input type="text" name="name" class="form-control" placeholder="Nom">
-                    <span class="help-inline"><?php echo $nameErrore?></span>
                 </label>
             </p>
             <p>
                 <label for="price">
                     Prix du produit : 
                     <input type="number" step="any" name = "price" class="form-control" placeholder="Prix">
-                    <span class="help-inline"><?php echo $priceErrore?></span>
                 </label>
             </p>
             <p>
                 <label for="quantite">
                     Quantité désirée : 
                     <input type="number" name="qtt" value="1" class="form-control">
-                    <span class = "help-inline"><?php echo $quantiteErrore ?></span>
                 </label>
             </p>
             <p>
                 <input class="btn btn-success" type="submit" name="submit" value="Ajouter le produit">
             </p>
+            <?php 
+
+if(!isset($_SESSION['products']) || empty($_SESSION['products'])){
+                        echo '<div class="alert alert-success" role="alert">';
+                        echo "<p>Echec d'un ajout de produit</p>";
+                        
+                    }else{
+                        echo $_SESSION['flash_message'];
+
+                        unset($_SESSION['flash_message']);
+                    }    
+
+                ?>
+            </div>    
+            
         </form>
     </div>
 
