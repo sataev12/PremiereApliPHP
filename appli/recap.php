@@ -14,17 +14,21 @@
         if(!isset($_SESSION['products']) || empty($_SESSION['products'])){
             echo "<p>Aucun produit en session ...</p>";
         }else{
-            echo "<table class="table table-striped table-bordered">",
-                    "<thead>",
-                        "<tr>",
-                            "<th>#</th>",
-                            "<th>Nom</th>",
-                            "<th>Prix</th>",
-                            "<th>Quantité</th>",
-                            "<th>Total</th>",
-                        "</tr>",    
-                    "<thead>",
-                    "<tbody>";
+            echo 
+                "<div class='container-btn'>
+                    <a class='btn btn-primary' href='./index.php'><span class='glyphicon'></span>Ajouter produit</a>
+                </div>
+                 <table class='table table-striped table-bordered'>
+                    <thead>
+                        <tr>
+                            <th>#</th>
+                            <th>Nom</th>
+                            <th>Prix</th>
+                            <th>Quantité</th>
+                            <th>Total</th>
+                        </tr>
+                    <thead>
+                    <tbody>";
         $totalGFeneral = 0;
         foreach($_SESSION['products'] as $index => $product){
             echo "<tr>",
