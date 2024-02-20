@@ -1,3 +1,7 @@
+<?php
+    session_start();
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -12,7 +16,16 @@
     <div class="container">
         <div class="container-btn">
             <a class="btn btn-primary" href="./index.php"><span class="glyphicon"></span>Ajouter produit</a>
-            <a class="btn btn-light" href="./recap.php"><span class="glyphicon"></span>Panier</a>
+            <a class="btn btn-light position-relative" href="./recap.php"><span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
+                <?php 
+                    if(!isset($_SESSION['products']) || empty($_SESSION['products'])){
+                        echo "<p>Vous n'avez pas ajouter les produits</p>";
+                }else{
+                        echo count($_SESSION['products']);
+                }
+                ?>
+            </span>Panier</a>
+            
         </div>
         
         <form class="form" action="traitement.php" method="post">
