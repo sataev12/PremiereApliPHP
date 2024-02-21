@@ -30,7 +30,7 @@
             
         </div>
         
-        <form class="form" action="traitement.php" method="post">
+        <form class="form" action="traitement.php?action=add" method="post">
             <p>
                 <label for="name">
                     Nom du produit : 
@@ -52,18 +52,14 @@
             <p>
                 <input class="btn btn-success" type="submit" name="submit" value="Ajouter le produit">
             </p>
-            <?php 
-
-if(!isset($_SESSION['products']) || empty($_SESSION['products'])){
-                        echo '<div class="alert alert-success" role="alert">';
-                        echo "<p>Echec d'un ajout de produit</p>";
-                        
+            <div>    
+                <?php 
+                    if(!isset($_SESSION['products']) || empty($_SESSION['products'])){
+                        echo $_SESSION['flash_message'];
                     }else{
                         echo $_SESSION['flash_message'];
-
                         unset($_SESSION['flash_message']);
                     }    
-
                 ?>
             </div>    
             
