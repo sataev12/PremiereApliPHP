@@ -12,11 +12,13 @@
     <title>Récapitulatif des produits</title>
 </head>
 <body>
+    <!-- Pour afficher le code de notre table-->
     <?php 
         if(!isset($_SESSION['products']) || empty($_SESSION['products'])){
+            //Si notre tableau est vide, on affiche ce message
             echo "<p>Aucun produit en session ...</p>";
         }else{
-            echo 
+            echo //Avec les class de bootstrap on ajouts le style de notre tableau
                 "<div class='container-btn'>
                     <a class='btn btn-primary' href='./index.php'><span class='glyphicon'></span>Ajouter produit</a>
                 </div>
@@ -33,6 +35,7 @@
                     <thead>
                     <tbody>";
         $totalGFeneral = 0;
+        //On parcours notre table products avec Foreach en affichant chaque produits
         foreach($_SESSION['products'] as $index => $product){
             echo "<tr>",
                     "<td>".$index."</td>",
@@ -44,7 +47,7 @@
                 "</tr>";
             $totalGFeneral += $product['total'];        
         }    
-        echo "<tr>",
+        echo "<tr>", //Total de notre tab
                 "<td colspan = 4>Total général : </td>",
                 "<td><strong>".number_format($totalGFeneral, 2, ",", "&nbsp;")."&nbsp;€</strong></td>",
              "</tr>",
@@ -52,16 +55,17 @@
         "</table>";
         }           
    ?> 
+   <!-- Message de suppression des produits-->
     <div>    
-                <?php 
-                    if(!isset($_SESSION['products']) || empty($_SESSION['products'])){
-                        echo $_SESSION['flash_message'];
-                    }else{
-                        echo $_SESSION['flash_message'];
-                        unset($_SESSION['flash_message']);
-                    }    
-                ?>
-            </div>     
+        <?php 
+            if(!isset($_SESSION['products']) || empty($_SESSION['products'])){
+                echo $_SESSION['flash_message'];
+            }else{
+                echo $_SESSION['flash_message'];
+                unset($_SESSION['flash_message']);
+            }    
+        ?>
+    </div>     
    
    <a class='btn btn-danger' href="traitement.php?action=clear">Vider le panier</a>
    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
